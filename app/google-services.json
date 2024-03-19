@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "261758196885",
+    "project_id": "fyp-project-b7db5",
+    "storage_bucket": "fyp-project-b7db5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:261758196885:android:81d10834f0154f49f28f9c",
+        "android_client_info": {
+          "package_name": "uk.ac.aston.fyp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAnQav1WTZ2dKKF0oJJAY-5iIHjvtpw0VU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
