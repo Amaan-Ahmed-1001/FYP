@@ -41,10 +41,14 @@
         app:layout_constraintStart_toStartOf="parent"
         tools:layout_editor_absoluteY="667dp" />
 
-    <fragment
-        android:id="@+id/fragmentone"
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/fragmentContainerView"
+        android:name="uk.ac.aston.fyp.HomepageFragment"
         android:layout_width="match_parent"
+        android:layout_height="match_parent"
         app:layout_constraintBottom_toTopOf="@+id/button"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="0dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
