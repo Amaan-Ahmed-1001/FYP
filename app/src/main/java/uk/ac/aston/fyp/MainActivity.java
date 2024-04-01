@@ -9,6 +9,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 
+//MAIN ACTIVITY - FEATURES LOGIN AND REGISTER BUTTONS
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
