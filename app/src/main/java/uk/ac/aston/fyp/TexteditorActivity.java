@@ -8,6 +8,7 @@ import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.Manifest;
 import android.provider.MediaStore;
+import android.util.Log;
 import android.view.View;
 
 public class TexteditorActivity extends AppCompatActivity {
@@ -21,8 +22,6 @@ public class TexteditorActivity extends AppCompatActivity {
     }
 
     public void createNewFile(View view) {
-        Intent intent = new Intent(Intent.ACTION_CREATE_DOCUMENT, MediaStore.Downloads.EXTERNAL_CONTENT_URI);
-        intent.setType("*.txt");
-        this.startActivity(intent);
+        Log.i("create new", "creating new file");
     }
 }
