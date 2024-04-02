@@ -8,6 +8,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+//HOMEPAGE FRAGMENT - FRAGMENT TO DISPLAY USER'S LATEST ADDED FILES
+
 public class HomepageFragment extends Fragment {
 
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER

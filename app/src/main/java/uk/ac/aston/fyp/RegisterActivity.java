@@ -15,6 +15,8 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+//REGISTER ACTIVITY - PAGE TO REGISTER USER IF THEY DO NOT ALREADY HAVE AN ACCOUNT
+
 public class RegisterActivity extends AppCompatActivity {
 
     private FirebaseAuth mAuth;

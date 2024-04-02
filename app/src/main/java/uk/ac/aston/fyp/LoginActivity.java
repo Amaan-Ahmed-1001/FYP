@@ -15,6 +15,8 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+//LOGIN ACTIVITY - ACTIVITY TO LOGIN USER IF THEY HAVE AN ACCOUNT
+
 public class LoginActivity extends AppCompatActivity {
 
     private String username;

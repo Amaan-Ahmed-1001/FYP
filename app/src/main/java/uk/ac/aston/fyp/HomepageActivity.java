@@ -15,6 +15,8 @@ import android.Manifest;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+//HOMEPAGE ACTIVITY - INCLUDES HOMEPAGE OPTIONS AND USER'S LATEST ADDED FILES
+
 public class HomepageActivity extends AppCompatActivity {
 
     @Override
