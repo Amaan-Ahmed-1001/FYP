@@ -8,7 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-//FILE FRAGMENT - FRAGMENT DISPLAYS FILE 
+//FILE FRAGMENT - FRAGMENT DISPLAYS FILE
 
 /**
  * A simple {@link Fragment} subclass.
