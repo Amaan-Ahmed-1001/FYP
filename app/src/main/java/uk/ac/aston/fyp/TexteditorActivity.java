@@ -11,6 +11,8 @@ import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
 
+//TEXTEDITOR ACTIVITY - TEXT EDITOR FOR USER TO DISPLAY AND EDIT FILES
+
 public class TexteditorActivity extends AppCompatActivity {
 
     @Override

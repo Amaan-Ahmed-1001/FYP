@@ -8,6 +8,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+//FILE FRAGMENT - FRAGMENT DISPLAYS FILE 
+
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link FileFragment#newInstance} factory method to
