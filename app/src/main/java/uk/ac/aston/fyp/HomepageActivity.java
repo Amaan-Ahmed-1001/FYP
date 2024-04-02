@@ -32,13 +32,6 @@ public class HomepageActivity extends AppCompatActivity {
     public void addFile(View view) {
         Intent i = new Intent(HomepageActivity.this, TexteditorActivity.class);
         startActivity(i);
-
-        Log.i("create new", "creating new file");
-        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.Q) {
-            Intent intent = new Intent(Intent.ACTION_CREATE_DOCUMENT, MediaStore.Downloads.EXTERNAL_CONTENT_URI);
-            intent.setType("*/*");
-            this.startActivity(intent);
-        }
     }
 
 }
