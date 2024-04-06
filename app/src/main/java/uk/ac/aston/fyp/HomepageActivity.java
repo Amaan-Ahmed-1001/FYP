@@ -29,4 +29,8 @@ public class HomepageActivity extends AppCompatActivity {
                         Manifest.permission.READ_EXTERNAL_STORAGE}, PackageManager.PERMISSION_GRANTED);
     }
 
+    public void toContacts(View view) {
+        Intent i = new Intent(HomepageActivity.this, ContactsActivity.class);
+        startActivity(i);
+    }
 }
