@@ -29,9 +29,4 @@ public class HomepageActivity extends AppCompatActivity {
                         Manifest.permission.READ_EXTERNAL_STORAGE}, PackageManager.PERMISSION_GRANTED);
     }
 
-    public void addFile(View view) {
-        Intent i = new Intent(HomepageActivity.this, TexteditorActivity.class);
-        startActivity(i);
-    }
-
 }
