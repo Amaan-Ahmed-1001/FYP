@@ -44,7 +44,6 @@
         android:id="@+id/addfilebutton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:onClick="addFile"
         android:text="Add File"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/settingsbutton"
