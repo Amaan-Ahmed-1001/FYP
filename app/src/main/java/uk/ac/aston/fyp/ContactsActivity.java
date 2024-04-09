@@ -48,11 +48,6 @@ public class ContactsActivity extends AppCompatActivity {
 
     public void addContact(View view) {
         Log.i("contact add", addContactText.getText().toString());
-        // Create a reference to the cities collection
-        CollectionReference usersRef = db.collection("Users");
-
-// Create a query against the collection.
-        Query query = usersRef.whereEqualTo("user", "test@email.com");
 
         db.collection("Users")
                 .whereEqualTo("user", addContactText.getText().toString())
