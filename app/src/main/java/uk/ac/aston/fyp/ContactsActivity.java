@@ -44,7 +44,7 @@ public class ContactsActivity extends AppCompatActivity {
         Query query = usersRef.whereEqualTo("user", "test@email.com");
 
         db.collection("Users")
-                .whereEqualTo("user", "test@email.com")
+                .whereEqualTo("user", addContactText.getText().toString())
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
