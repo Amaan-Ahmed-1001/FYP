@@ -100,7 +100,7 @@ public class ContactsActivity extends AppCompatActivity {
 
     public void addToDatabase(String documentId) {
         Map<String, Object> docData = new HashMap<>();
-        docData.put("listExample", Arrays.asList().add(addContactText.getText().toString()));
+        docData.put("listExample", new java.util.ArrayList<>(Arrays.asList()).add(addContactText.getText().toString()));
 
         db.collection("Users").document(documentId)
                 .set(docData)
