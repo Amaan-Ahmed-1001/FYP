@@ -21,6 +21,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
+import com.google.firebase.firestore.SetOptions;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -100,10 +101,12 @@ public class ContactsActivity extends AppCompatActivity {
 
     public void addToDatabase(String documentId) {
         Map<String, Object> docData = new HashMap<>();
-        docData.put("listExample", new java.util.ArrayList<>(Arrays.asList()).add(addContactText.getText().toString()));
+        ArrayList<String> addingList = new ArrayList<String>();
+        addingList.add(addContactText.getText().toString());
+        docData.put("contacts", addingList);
 
         db.collection("Users").document(documentId)
-                .set(docData)
+                .set(docData, SetOptions.merge())
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {
