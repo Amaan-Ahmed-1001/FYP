@@ -32,7 +32,7 @@ import java.util.Map;
 public class ContactsActivity extends AppCompatActivity {
 
     private EditText addContactText;
-    private ListView contactList;
+    private ListView contactListView;
     private ArrayList<String> usersList;
     private ArrayAdapter<String> usersListAdapter;
     private String myDocId;
@@ -43,11 +43,33 @@ public class ContactsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_contacts);
         addContactText = findViewById(R.id.addcontacttext);
-        contactList = findViewById(R.id.contactslist);
+        contactListView = findViewById(R.id.contactslist);
         usersList = new ArrayList<String>();
         usersListAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, usersList);
-        contactList.setAdapter(usersListAdapter);
-        myDocId = "";
+        contactListView.setAdapter(usersListAdapter);
+
+        db.collection("Users")
+                .whereEqualTo("user", FirebaseAuth.getInstance().getCurrentUser().getEmail())
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                Log.i("MyUser", document.getId() + " => " + document.getData());
+                                myDocId = document.getId();
+                                usersList = (ArrayList<String>) document.get("contacts");
+                                for (int i = 0; i <= usersList.size() - 1; i++) {
+                                    usersListAdapter.add(usersList.get(i));
+                                }
+                            }
+                            Log.i("MyID", myDocId);
+                        } else {
+                            Log.i("Error getting documents: ", task.getException().toString());
+                        }
+                    }
+                });
+
     }
 
     public void toHome(View view) {
@@ -120,4 +142,5 @@ public class ContactsActivity extends AppCompatActivity {
                     }
                 });
     }
+    
 }
