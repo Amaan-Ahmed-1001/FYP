@@ -35,13 +35,7 @@ public class HomepageActivity extends AppCompatActivity {
                 .addOnSuccessListener(new OnSuccessListener<ListResult>() {
                     @Override
                     public void onSuccess(ListResult listResult) {
-                        for (StorageReference prefix : listResult.getPrefixes()) {
-                            // All the prefixes under listRef.
-                            // You may call listAll() recursively on them.
-                        }
-
                         for (StorageReference item : listResult.getItems()) {
-                            // All the items under listRef.
                             filesList.setText(item.getName());
                         }
                     }
