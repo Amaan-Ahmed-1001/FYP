@@ -36,6 +36,11 @@ public class SendFileActivity extends AppCompatActivity {
                         Manifest.permission.READ_EXTERNAL_STORAGE}, PackageManager.PERMISSION_GRANTED);
     }
 
+    public void goBack(View view) {
+        Intent i = new Intent(SendFileActivity.this, HomepageActivity.class);
+        startActivity(i);
+    }
+
     public void sendFile(View view) {
         if (chooseContact.getText().toString().equals(null)) {
             Toast.makeText(SendFileActivity.this, "emptytext", Toast.LENGTH_SHORT).show();

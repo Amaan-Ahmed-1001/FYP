@@ -72,6 +72,11 @@ public class HomepageActivity extends AppCompatActivity {
         startActivity(i);
     }
 
+    public void toSettings(View view) {
+        Intent i = new Intent(HomepageActivity.this, SettingsActivity.class);
+        startActivity(i);
+    }
+
     public void createFile(View view) {
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.Q) {
             Intent intent = new Intent(Intent.ACTION_CREATE_DOCUMENT, MediaStore.Downloads.EXTERNAL_CONTENT_URI);
