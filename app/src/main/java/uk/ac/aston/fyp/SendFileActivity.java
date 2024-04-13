@@ -55,9 +55,6 @@ public class SendFileActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         if (resultCode == RESULT_OK) {
 
-
-            // this will show message uploading
-            // while pdf is uploading
             imageuri = data.getData();
             final String timestamp = "" + System.currentTimeMillis();
             StorageReference storageReference = FirebaseStorage.getInstance().getReference();
@@ -79,8 +76,6 @@ public class SendFileActivity extends AppCompatActivity {
                 @Override
                 public void onComplete(@NonNull Task<Uri> task) {
                     if (task.isSuccessful()) {
-                        // After uploading is done it progress
-                        // dialog box will be dismissed
                         Uri uri = task.getResult();
                         Toast.makeText(SendFileActivity.this, "Uploaded Successfully", Toast.LENGTH_SHORT).show();
                     } else {
