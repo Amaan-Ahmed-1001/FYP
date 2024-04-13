@@ -4,4 +4,12 @@
         <!-- Customize your dark theme here. -->
         <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
     </style>
+
+    <style name="Screen">
+        <item name="android:background">#222121</item>
+    </style>
+
+    <style name="Text">
+        <item name="android:textColor">#FFFFFF</item>
+    </style>
 </resources>

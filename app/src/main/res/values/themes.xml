@@ -6,4 +6,12 @@
     </style>
 
     <style name="Theme.FYP" parent="Base.Theme.FYP" />
+
+    <style name="Screen">
+        <item name="android:background">#FFFFFF</item>
+    </style>
+
+    <style name="Text">
+        <item name="android:textColor">#000</item>
+    </style>
 </resources>
