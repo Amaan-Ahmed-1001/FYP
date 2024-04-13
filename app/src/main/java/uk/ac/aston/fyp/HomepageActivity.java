@@ -39,6 +39,8 @@ public class HomepageActivity extends AppCompatActivity {
         filesAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, files);
         fileList.setAdapter(filesAdapter);
 
+        filesList.setText(FirebaseAuth.getInstance().getCurrentUser().getEmail());
+
         FirebaseStorage storage = FirebaseStorage.getInstance();
         StorageReference listRef = storage.getReference().child(FirebaseAuth.getInstance().getCurrentUser().getEmail());
 
@@ -47,7 +49,6 @@ public class HomepageActivity extends AppCompatActivity {
                     @Override
                     public void onSuccess(ListResult listResult) {
                         for (StorageReference item : listResult.getItems()) {
-                            filesList.setText(item.getName());
                             filesAdapter.add(item.getName());
                         }
                     }

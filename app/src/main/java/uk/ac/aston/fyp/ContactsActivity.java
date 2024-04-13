@@ -10,21 +10,19 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.firestore.SetOptions;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -80,23 +78,27 @@ public class ContactsActivity extends AppCompatActivity {
     public void addContact(View view) {
 
         //first get, if user exists
-        db.collection("Users")
-                .whereEqualTo("user", addContactText.getText().toString())
-                .get()
-                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                        if (task.isSuccessful()) {
-                            for (QueryDocumentSnapshot document : task.getResult()) {
-                                Log.i("TAG", document.getId() + " => " + document.getData());
+        if (addContactText.getText().toString().equals(null)) {
+            Toast.makeText(this, "Please enter a contact", Toast.LENGTH_SHORT).show();
+        } else {
+            db.collection("Users")
+                    .whereEqualTo("user", addContactText.getText().toString())
+                    .get()
+                    .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                        @Override
+                        public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                            if (task.isSuccessful()) {
+                                for (QueryDocumentSnapshot document : task.getResult()) {
+                                    Log.i("TAG", document.getId() + " => " + document.getData());
+                                }
+                                getDocId();
+                                usersListAdapter.add(addContactText.getText().toString());
+                            } else {
+                                Log.i("Error getting documents: ", task.getException().toString());
                             }
-                            getDocId();
-                            usersListAdapter.add(addContactText.getText().toString());
-                        } else {
-                            Log.i("Error getting documents: ", task.getException().toString());
                         }
-                    }
-                });
+                    });
+        }
     }
 
     public void getDocId() {
