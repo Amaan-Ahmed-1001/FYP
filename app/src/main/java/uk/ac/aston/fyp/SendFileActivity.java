@@ -10,19 +10,31 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.Continuation;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
+
+import java.util.ArrayList;
 
 public class SendFileActivity extends AppCompatActivity {
 
     EditText chooseContact;
+    ArrayList<String> contacts;
+    String myDocId;
+    FirebaseFirestore db = FirebaseFirestore.getInstance();
+    private ArrayAdapter<String> contactsAdapter;
     Uri imageuri;
 
     @Override
@@ -32,8 +44,27 @@ public class SendFileActivity extends AppCompatActivity {
         chooseContact = findViewById(R.id.choosecontact);
 
         ActivityCompat.requestPermissions(this,
-                new String[] {android.Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                new String[] {Manifest.permission.WRITE_EXTERNAL_STORAGE,
                         Manifest.permission.READ_EXTERNAL_STORAGE}, PackageManager.PERMISSION_GRANTED);
+
+        db.collection("Users")
+                .whereEqualTo("user", FirebaseAuth.getInstance().getCurrentUser().getEmail())
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                Log.i("MyUser", document.getId() + " => " + document.getData());
+                                myDocId = document.getId();
+                                contacts = (ArrayList<String>) document.get("contacts");
+                            }
+                        } else {
+                            Log.i("Error getting documents: ", task.getException().toString());
+                        }
+                    }
+                });
+        contactsAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, contacts);
     }
 
     public void goBack(View view) {
