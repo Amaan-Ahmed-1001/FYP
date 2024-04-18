@@ -12,7 +12,9 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -31,8 +33,10 @@ import java.util.ArrayList;
 public class SendFileActivity extends AppCompatActivity {
 
     EditText chooseContact;
+    AutoCompleteTextView auto;
     ArrayList<String> contacts;
     String myDocId;
+    String item;
     FirebaseFirestore db = FirebaseFirestore.getInstance();
     private ArrayAdapter<String> contactsAdapter;
     Uri imageuri;
@@ -42,6 +46,8 @@ public class SendFileActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_send_file);
         chooseContact = findViewById(R.id.choosecontact);
+        auto = findViewById(R.id.autoCompleteTextView);
+        contacts = new ArrayList<String>();
 
         ActivityCompat.requestPermissions(this,
                 new String[] {Manifest.permission.WRITE_EXTERNAL_STORAGE,
@@ -58,6 +64,9 @@ public class SendFileActivity extends AppCompatActivity {
                                 Log.i("MyUser", document.getId() + " => " + document.getData());
                                 myDocId = document.getId();
                                 contacts = (ArrayList<String>) document.get("contacts");
+                                for (int i = 0; i <= contacts.size() - 1; i++) {
+                                    contactsAdapter.add(contacts.get(i));
+                                }
                             }
                         } else {
                             Log.i("Error getting documents: ", task.getException().toString());
@@ -65,24 +74,29 @@ public class SendFileActivity extends AppCompatActivity {
                     }
                 });
         contactsAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, contacts);
+        auto.setAdapter(contactsAdapter);
+
+        auto.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                item = parent.getItemAtPosition(position).toString();
+                Log.i("item", item);
+            }
+        });
+
     }
 
     public void goBack(View view) {
         Intent i = new Intent(SendFileActivity.this, HomepageActivity.class);
         startActivity(i);
     }
-
     public void sendFile(View view) {
-        if (chooseContact.getText().toString().equals(null)) {
-            Toast.makeText(SendFileActivity.this, "emptytext", Toast.LENGTH_SHORT).show();
-        } else {
             Intent i = new Intent();
             i.setAction(Intent.ACTION_GET_CONTENT);
 
             // We will be redirected to choose pdf
             i.setType("application/pdf");
             startActivityForResult(i, 1);
-        }
     }
 
     @Override
@@ -97,7 +111,7 @@ public class SendFileActivity extends AppCompatActivity {
             Toast.makeText(SendFileActivity.this, imageuri.toString(), Toast.LENGTH_SHORT).show();
 
             // Here we are uploading the pdf in firebase storage with the name of current time
-            final StorageReference filepath = storageReference.child(chooseContact.getText().toString() + "/" + messagePushID + "." + "pdf");
+            final StorageReference filepath = storageReference.child(item + "/" + messagePushID + "." + "pdf");
             Toast.makeText(SendFileActivity.this, filepath.getName(), Toast.LENGTH_SHORT).show();
             filepath.putFile(imageuri).continueWithTask(new Continuation() {
                 @Override

@@ -125,9 +125,8 @@ public class ContactsActivity extends AppCompatActivity {
 
     public void addToDatabase(String documentId) {
         Map<String, Object> docData = new HashMap<>();
-        ArrayList<String> addingList = new ArrayList<String>();
-        addingList.add(addContactText.getText().toString());
-        docData.put("contacts", addingList);
+        usersList.add(addContactText.getText().toString());
+        docData.put("contacts", usersList);
 
         db.collection("Users").document(documentId)
                 .set(docData, SetOptions.merge())
