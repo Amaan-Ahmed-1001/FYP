@@ -1,5 +1,6 @@
 package uk.ac.aston.fyp;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -10,10 +11,17 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.HashMap;
+import java.util.Map;
 
 //REGISTER ACTIVITY - PAGE TO REGISTER USER IF THEY DO NOT ALREADY HAVE AN ACCOUNT
 
@@ -24,6 +32,7 @@ public class RegisterActivity extends AppCompatActivity {
     private String password;
     EditText registerEmail;
     EditText registerPassword;
+    FirebaseFirestore db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +41,7 @@ public class RegisterActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         registerEmail = findViewById(R.id.registerusernametext);
         registerPassword = findViewById(R.id.registerpasswordtext);
+        db = FirebaseFirestore.getInstance();
     }
 
     @Override
@@ -56,6 +66,7 @@ public class RegisterActivity extends AppCompatActivity {
                             // Sign in success, update UI with the signed-in user's information
                             Log.i("Register update", "createUserWithEmail:success");
                             FirebaseUser user = mAuth.getCurrentUser();
+                            createDocument();
                             Intent i = new Intent(RegisterActivity.this, HomepageActivity.class);
                             startActivity(i);
                         } else {
@@ -66,5 +77,28 @@ public class RegisterActivity extends AppCompatActivity {
                         }
                     }
                 });
+    }
+
+    public void createDocument() {
+        mAuth = FirebaseAuth.getInstance();
+        Map<String, Object> user = new HashMap<>();
+        user.put("user", mAuth.getCurrentUser().getEmail());
+        user.put("uid", mAuth.getCurrentUser().getUid());
+
+        db.collection("Users")
+                .add(user)
+                .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                    @Override
+                    public void onSuccess(DocumentReference documentReference) {
+                        Log.i("TAG", "DocumentSnapshot written with ID: " + documentReference.getId());
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Log.i("TAG", "Error adding document");
+                    }
+                });
+
     }
 }
