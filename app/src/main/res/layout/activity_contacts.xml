@@ -8,15 +8,18 @@
 
     <Button
         android:id="@+id/addcontactbutton"
-        android:layout_width="wrap_content"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="52dp"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/buttons"
         android:onClick="addContact"
         android:text="Add"
+        android:textColor="@color/white"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/contactslist"
-        app:layout_constraintVertical_bias="0.263" />
+        app:layout_constraintVertical_bias="0.242" />
 
     <ListView
         android:id="@+id/contactslist"
@@ -45,10 +48,13 @@
 
     <Button
         android:id="@+id/backbutton"
-        android:layout_width="wrap_content"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:onClick="toHome"
         android:text="Home"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:background="@drawable/buttons"
         app:layout_constraintBottom_toTopOf="@+id/contactslist"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.093"

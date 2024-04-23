@@ -19,10 +19,13 @@
 
     <Button
         android:id="@+id/createfilebutton2"
-        android:layout_width="wrap_content"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:onClick="createFile"
         android:text="Create File"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:background="@drawable/buttons"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
@@ -32,33 +35,42 @@
 
     <Button
         android:id="@+id/settingsbutton"
-        android:layout_width="wrap_content"
+        android:layout_width="120dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="28dp"
         android:onClick="toSettings"
         android:text="Settings"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:background="@drawable/buttons"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
     <Button
         android:id="@+id/contactsbutton"
-        android:layout_width="wrap_content"
+        android:layout_width="120dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginBottom="28dp"
         android:onClick="toContacts"
         android:text="Contacts"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:background="@drawable/buttons"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/sendfilebutton"
-        android:layout_width="wrap_content"
+        android:layout_width="120dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="28dp"
         android:onClick="toSendFile"
         android:text="Send File"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:background="@drawable/buttons"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/settingsbutton"
         app:layout_constraintHorizontal_bias="0.461"
