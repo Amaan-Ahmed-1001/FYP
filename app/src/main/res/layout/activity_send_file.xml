@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SendFileActivity">
+    tools:context=".SendFileActivity"
+    style="@style/Screen">
 
     <Button
         android:id="@+id/sendbutton"

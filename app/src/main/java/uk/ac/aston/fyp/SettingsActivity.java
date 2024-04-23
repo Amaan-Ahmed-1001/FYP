@@ -26,12 +26,7 @@ import java.util.ArrayList;
 
 public class SettingsActivity extends AppCompatActivity {
 
-    Button lightmodeButton;
-    Button darkmodeButton;
     Button deleteAccountButton;
-    boolean nightmode;
-    SharedPreferences sharedPreferences;
-    SharedPreferences.Editor editor;
     FirebaseFirestore db;
     String myDocId;
 
@@ -39,13 +34,8 @@ public class SettingsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
-        lightmodeButton = findViewById(R.id.lightmodebutton);
-        darkmodeButton = findViewById(R.id.darkmodebutton);
         deleteAccountButton = findViewById(R.id.deleteaccountbutton);
         db = FirebaseFirestore.getInstance();
-
-        sharedPreferences = getSharedPreferences("Mode", Context.MODE_PRIVATE);
-        nightmode = sharedPreferences.getBoolean("night", false);
 
         db.collection("Users")
                 .whereEqualTo("user", FirebaseAuth.getInstance().getCurrentUser().getEmail())
@@ -66,19 +56,6 @@ public class SettingsActivity extends AppCompatActivity {
                 });
     }
 
-    public void lightMode(View view) {
-        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
-        editor = sharedPreferences.edit();
-        editor.putBoolean("night", false);
-        editor.apply();
-    }
-
-    public void darkMode(View view) {
-        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
-        editor = sharedPreferences.edit();
-        editor.putBoolean("night", true);
-        editor.apply();
-    }
 
     public void deleteAccount(View view) {
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
