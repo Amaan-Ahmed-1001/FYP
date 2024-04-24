@@ -7,7 +7,7 @@
     tools:context=".ContactsActivity"
     style="@style/Screen">
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/addcontactbutton"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
@@ -47,7 +47,7 @@
         app:layout_constraintVertical_bias="0.493"
         tools:text="Email" />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/backbutton"
         android:layout_width="150dp"
         android:layout_height="wrap_content"

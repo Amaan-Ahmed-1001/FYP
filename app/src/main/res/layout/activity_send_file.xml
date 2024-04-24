@@ -7,7 +7,7 @@
     tools:context=".SendFileActivity"
     style="@style/Screen">
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/sendbutton"
         android:layout_width="150dp"
         android:layout_height="70dp"
@@ -38,7 +38,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/homebutton"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
