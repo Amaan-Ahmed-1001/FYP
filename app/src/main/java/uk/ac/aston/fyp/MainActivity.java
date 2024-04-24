@@ -1,7 +1,6 @@
 package uk.ac.aston.fyp;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
 
 import android.content.Intent;
 import android.os.Bundle;

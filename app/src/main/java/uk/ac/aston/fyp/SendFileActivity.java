@@ -32,7 +32,6 @@ import java.util.ArrayList;
 
 public class SendFileActivity extends AppCompatActivity {
 
-    EditText chooseContact;
     AutoCompleteTextView auto;
     ArrayList<String> contacts;
     String myDocId;
@@ -45,7 +44,6 @@ public class SendFileActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_send_file);
-        chooseContact = findViewById(R.id.choosecontact);
         auto = findViewById(R.id.autoCompleteTextView);
         contacts = new ArrayList<String>();
 
