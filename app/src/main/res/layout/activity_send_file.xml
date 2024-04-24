@@ -30,7 +30,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="140dp"
         android:text="Send File"
-        android:textColor="@color/white"
+        android:textColor="@color/textcolour"
         android:textSize="40sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"

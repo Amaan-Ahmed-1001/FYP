@@ -39,7 +39,7 @@ public class HomepageActivity extends AppCompatActivity {
         filesList = findViewById(R.id.fileslist);
         fileList = findViewById(R.id.fileslistview);
         files = new ArrayList<String>();
-        filesAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, files);
+        filesAdapter = new ArrayAdapter<>(getApplicationContext(), R.layout.list_item_layout, files);
         fileList.setAdapter(filesAdapter);
         db = FirebaseFirestore.getInstance();
         filesList.setText(FirebaseAuth.getInstance().getCurrentUser().getEmail());

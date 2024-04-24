@@ -11,8 +11,8 @@
         android:id="@+id/fileslist"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="@color/white"
-        android:textSize="20sp"
+        android:textColor="@color/textcolour"
+        android:textSize="25sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -66,8 +66,11 @@
         android:textColor="@color/white"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/settingsbutton"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/createfilebutton2" />
+        app:layout_constraintTop_toBottomOf="@+id/createfilebutton2"
+        app:layout_constraintVertical_bias="0.0" />
 
     <Button
         android:id="@+id/sendfilebutton"

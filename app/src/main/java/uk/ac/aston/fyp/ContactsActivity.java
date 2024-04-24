@@ -43,7 +43,7 @@ public class ContactsActivity extends AppCompatActivity {
         addContactText = findViewById(R.id.addcontacttext);
         contactListView = findViewById(R.id.contactslist);
         usersList = new ArrayList<String>();
-        usersListAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, usersList);
+        usersListAdapter = new ArrayAdapter<>(getApplicationContext(), R.layout.list_item_layout, usersList);
         contactListView.setAdapter(usersListAdapter);
 
         db.collection("Users")
