@@ -55,6 +55,11 @@ public class SettingsActivity extends AppCompatActivity {
                 });
     }
 
+    public void toReset(View view) {
+        Intent i = new Intent(this, ResetPasswordActivity.class);
+        startActivity(i);
+    }
+
 
     public void deleteAccount(View view) {
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
