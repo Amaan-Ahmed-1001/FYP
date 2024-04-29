@@ -8,21 +8,21 @@
     style="@style/Screen">
 
     <TextView
-        android:id="@+id/fileslist"
+        android:id="@+id/loggedinuser"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="@color/textcolour"
-        android:textSize="25sp"
+        android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.749"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.05" />
+        app:layout_constraintVertical_bias="0.035" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/createfilebutton2"
+        android:id="@+id/createfilebutton"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:background="@drawable/buttons"
@@ -32,10 +32,10 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.521"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.824" />
+        app:layout_constraintVertical_bias="0.871" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/settingsbutton"
@@ -50,7 +50,7 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/createfilebutton2"
+        app:layout_constraintTop_toBottomOf="@+id/createfilebutton"
         app:layout_constraintVertical_bias="1.0" />
 
     <androidx.appcompat.widget.AppCompatButton
@@ -58,7 +58,6 @@
         android:layout_width="120dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="64dp"
         android:layout_marginBottom="28dp"
         android:background="@drawable/buttons"
         android:onClick="toContacts"
@@ -68,9 +67,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/settingsbutton"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/createfilebutton2"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/sendfilebutton"
@@ -86,17 +83,46 @@
         app:layout_constraintEnd_toStartOf="@+id/settingsbutton"
         app:layout_constraintHorizontal_bias="0.473"
         app:layout_constraintStart_toEndOf="@+id/contactsbutton"
-        app:layout_constraintTop_toBottomOf="@+id/createfilebutton2"
+        app:layout_constraintTop_toBottomOf="@+id/createfilebutton"
         app:layout_constraintVertical_bias="1.0" />
 
     <ListView
         android:id="@+id/fileslistview"
         android:layout_width="405dp"
         android:layout_height="411dp"
-        app:layout_constraintBottom_toTopOf="@+id/createfilebutton2"
+        app:layout_constraintBottom_toTopOf="@+id/createfilebutton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.921" />
+        app:layout_constraintVertical_bias="0.869" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/button"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/buttons"
+        android:onClick="logOut"
+        android:text="Log Out"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/fileslistview"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.054"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.129" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Your Files"
+        android:textColor="@color/textcolour"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/fileslistview"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

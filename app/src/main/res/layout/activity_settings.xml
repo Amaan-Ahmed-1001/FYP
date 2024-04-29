@@ -37,19 +37,19 @@
         app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/backbutton2"
+        android:id="@+id/settingshomebutton"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
+        android:background="@drawable/buttons"
         android:onClick="goBack"
         android:text="Home"
-        android:background="@drawable/buttons"
         android:textColor="@color/white"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/textView3"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.139"
+        app:layout_constraintHorizontal_bias="0.106"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.421" />
 </androidx.constraintlayout.widget.ConstraintLayout>

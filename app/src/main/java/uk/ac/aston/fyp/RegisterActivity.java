@@ -32,6 +32,7 @@ public class RegisterActivity extends AppCompatActivity {
     private String password;
     EditText registerEmail;
     EditText registerPassword;
+    EditText reenterPass;
     FirebaseFirestore db;
 
     @Override
@@ -41,6 +42,7 @@ public class RegisterActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         registerEmail = findViewById(R.id.registerusernametext);
         registerPassword = findViewById(R.id.registerpasswordtext);
+        reenterPass = findViewById(R.id.registerreenterpass);
         db = FirebaseFirestore.getInstance();
     }
 
@@ -57,26 +59,31 @@ public class RegisterActivity extends AppCompatActivity {
     public void registerUser(View view) {
         email = registerEmail.getText().toString();
         password = registerPassword.getText().toString();
+        String secondPass = reenterPass.getText().toString();
 
-        mAuth.createUserWithEmailAndPassword(email, password)
-                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete( Task<AuthResult> task) {
-                        if (task.isSuccessful()) {
-                            // Sign in success, update UI with the signed-in user's information
-                            Log.i("Register update", "createUserWithEmail:success");
-                            FirebaseUser user = mAuth.getCurrentUser();
-                            createDocument();
-                            Intent i = new Intent(RegisterActivity.this, HomepageActivity.class);
-                            startActivity(i);
-                        } else {
-                            // If sign in fails, display a message to the user.
-                            Log.i("createUserWithEmail:failure", task.getException().toString());
-                            Toast.makeText(RegisterActivity.this, "Authentication failed.",
-                                    Toast.LENGTH_SHORT).show();
+        if (!password.equals(secondPass)) {
+            Log.i("Passwords not the same", "Passwords do not match");
+        } else {
+            mAuth.createUserWithEmailAndPassword(email, password)
+                    .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete( Task<AuthResult> task) {
+                            if (task.isSuccessful()) {
+                                // Sign in success, update UI with the signed-in user's information
+                                Log.i("Register update", "createUserWithEmail:success");
+                                FirebaseUser user = mAuth.getCurrentUser();
+                                createDocument();
+                                Intent i = new Intent(RegisterActivity.this, HomepageActivity.class);
+                                startActivity(i);
+                            } else {
+                                // If sign in fails, display a message to the user.
+                                Log.i("createUserWithEmail:failure", task.getException().toString());
+                                Toast.makeText(RegisterActivity.this, "Authentication failed.",
+                                        Toast.LENGTH_SHORT).show();
+                            }
                         }
-                    }
-                });
+                    });
+        }
     }
 
     public void createDocument() {

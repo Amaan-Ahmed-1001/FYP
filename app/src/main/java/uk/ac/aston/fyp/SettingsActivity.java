@@ -18,11 +18,14 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
 public class SettingsActivity extends AppCompatActivity {
 
     Button deleteAccountButton;
     FirebaseFirestore db;
+    FirebaseStorage storage;
     String myDocId;
 
     @Override
@@ -31,6 +34,7 @@ public class SettingsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_settings);
         deleteAccountButton = findViewById(R.id.deleteaccountbutton);
         db = FirebaseFirestore.getInstance();
+        storage = FirebaseStorage.getInstance();
 
         db.collection("Users")
                 .whereEqualTo("user", FirebaseAuth.getInstance().getCurrentUser().getEmail())
@@ -69,6 +73,21 @@ public class SettingsActivity extends AppCompatActivity {
                         Log.i("TAG", "Error deleting document");
                     }
                 });
+
+        StorageReference storageRef = storage.getReference();
+        StorageReference desertRef = storageRef.child(user.getEmail());
+
+        desertRef.delete().addOnSuccessListener(new OnSuccessListener<Void>() {
+            @Override
+            public void onSuccess(Void aVoid) {
+                Log.i("folder deleted", "user files deleted");
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception exception) {
+                Log.i("ERROR", "Check error");
+            }
+        });
 
         user.delete()
                 .addOnCompleteListener(new OnCompleteListener<Void>() {

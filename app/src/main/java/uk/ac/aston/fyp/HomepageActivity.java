@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
@@ -36,13 +37,14 @@ public class HomepageActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_homepage);
-        filesList = findViewById(R.id.fileslist);
+        filesList = findViewById(R.id.loggedinuser);
         fileList = findViewById(R.id.fileslistview);
         files = new ArrayList<String>();
         filesAdapter = new ArrayAdapter<>(getApplicationContext(), R.layout.list_item_layout, files);
         fileList.setAdapter(filesAdapter);
         db = FirebaseFirestore.getInstance();
         filesList.setText(FirebaseAuth.getInstance().getCurrentUser().getEmail());
+        mAuth = FirebaseAuth.getInstance();
 
         FirebaseStorage storage = FirebaseStorage.getInstance();
         StorageReference listRef = storage.getReference().child(FirebaseAuth.getInstance().getCurrentUser().getEmail());
@@ -63,6 +65,13 @@ public class HomepageActivity extends AppCompatActivity {
                     }
                 });
 
+    }
+
+    public void logOut(View view) {
+        mAuth.signOut();
+        Log.i("Signed out", "Signed out");
+        Intent i = new Intent(this, MainActivity.class);
+        startActivity(i);
     }
 
     public void toContacts(View view) {

@@ -41,7 +41,7 @@ public class ContactsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_contacts);
         addContactText = findViewById(R.id.addcontacttext);
-        contactListView = findViewById(R.id.contactslist);
+        contactListView = findViewById(R.id.contactslistview);
         usersList = new ArrayList<String>();
         usersListAdapter = new ArrayAdapter<>(getApplicationContext(), R.layout.list_item_layout, usersList);
         contactListView.setAdapter(usersListAdapter);

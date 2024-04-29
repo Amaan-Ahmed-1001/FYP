@@ -19,11 +19,11 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/contactslist"
+        app:layout_constraintTop_toBottomOf="@+id/contactslistview"
         app:layout_constraintVertical_bias="0.486" />
 
     <ListView
-        android:id="@+id/contactslist"
+        android:id="@+id/contactslistview"
         android:layout_width="406dp"
         android:layout_height="324dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -43,12 +43,12 @@
         app:layout_constraintEnd_toStartOf="@+id/addcontactbutton"
         app:layout_constraintHorizontal_bias="0.457"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/contactslist"
+        app:layout_constraintTop_toBottomOf="@+id/contactslistview"
         app:layout_constraintVertical_bias="0.493"
         tools:text="Email" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/backbutton"
+        android:id="@+id/contactshomebutton"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:background="@drawable/buttons"
@@ -56,7 +56,7 @@
         android:text="Home"
         android:textColor="@color/white"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/contactslist"
+        app:layout_constraintBottom_toTopOf="@+id/contactslistview"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.061"
         app:layout_constraintStart_toStartOf="parent"
@@ -71,8 +71,8 @@
         android:textColor="@color/textcolour"
         android:textSize="40sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/contactslist"
+        app:layout_constraintBottom_toTopOf="@+id/contactslistview"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/backbutton" />
+        app:layout_constraintTop_toBottomOf="@+id/contactshomebutton" />
 </androidx.constraintlayout.widget.ConstraintLayout>
