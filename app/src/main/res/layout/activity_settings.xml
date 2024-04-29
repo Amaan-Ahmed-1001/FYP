@@ -52,4 +52,18 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.421" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/changepasswordbutton"
+        android:layout_width="150dp"
+        android:layout_height="70dp"
+        android:background="@drawable/buttons"
+        android:text="Reset Password"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/deleteaccountbutton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView3"
+        app:layout_constraintVertical_bias="0.704" />
 </androidx.constraintlayout.widget.ConstraintLayout>

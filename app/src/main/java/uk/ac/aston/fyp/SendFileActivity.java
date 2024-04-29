@@ -28,6 +28,7 @@ import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
+import java.io.File;
 import java.util.ArrayList;
 
 public class SendFileActivity extends AppCompatActivity {
@@ -103,13 +104,13 @@ public class SendFileActivity extends AppCompatActivity {
         if (resultCode == RESULT_OK) {
 
             imageuri = data.getData();
-            final String timestamp = "" + System.currentTimeMillis();
+            File file = new File(imageuri.getPath());
+            String filename = file.getName();
             StorageReference storageReference = FirebaseStorage.getInstance().getReference();
-            final String messagePushID = timestamp;
-            Toast.makeText(SendFileActivity.this, imageuri.toString(), Toast.LENGTH_SHORT).show();
+            Toast.makeText(SendFileActivity.this, "File Sent", Toast.LENGTH_SHORT).show();
 
             // Here we are uploading the pdf in firebase storage with the name of current time
-            final StorageReference filepath = storageReference.child(item + "/" + messagePushID + "." + "pdf");
+            final StorageReference filepath = storageReference.child(item + "/" + filename + "." + "pdf");
             Toast.makeText(SendFileActivity.this, filepath.getName(), Toast.LENGTH_SHORT).show();
             filepath.putFile(imageuri).continueWithTask(new Continuation() {
                 @Override
