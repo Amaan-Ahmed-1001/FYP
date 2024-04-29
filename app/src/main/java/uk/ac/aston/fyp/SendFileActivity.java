@@ -33,6 +33,7 @@ import java.util.ArrayList;
 
 public class SendFileActivity extends AppCompatActivity {
 
+    //PAGE FOR SENDING FILES
     AutoCompleteTextView auto;
     ArrayList<String> contacts;
     String myDocId;

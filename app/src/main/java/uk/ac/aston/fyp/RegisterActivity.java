@@ -49,7 +49,6 @@ public class RegisterActivity extends AppCompatActivity {
     @Override
     public void onStart() {
         super.onStart();
-        // Check if user is signed in (non-null) and update UI accordingly.
         FirebaseUser currentUser = mAuth.getCurrentUser();
         if (currentUser != null) {
             currentUser.reload();
@@ -69,14 +68,12 @@ public class RegisterActivity extends AppCompatActivity {
                         @Override
                         public void onComplete( Task<AuthResult> task) {
                             if (task.isSuccessful()) {
-                                // Sign in success, update UI with the signed-in user's information
                                 Log.i("Register update", "createUserWithEmail:success");
                                 FirebaseUser user = mAuth.getCurrentUser();
                                 createDocument();
                                 Intent i = new Intent(RegisterActivity.this, HomepageActivity.class);
                                 startActivity(i);
                             } else {
-                                // If sign in fails, display a message to the user.
                                 Log.i("createUserWithEmail:failure", task.getException().toString());
                                 Toast.makeText(RegisterActivity.this, "Authentication failed.",
                                         Toast.LENGTH_SHORT).show();

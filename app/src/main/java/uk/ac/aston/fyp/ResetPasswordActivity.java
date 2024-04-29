@@ -16,6 +16,8 @@ import com.google.firebase.auth.FirebaseUser;
 
 public class ResetPasswordActivity extends AppCompatActivity {
 
+    //PAGE FOR RESETTING A PASSWORD
+
     EditText newPass;
     EditText newPassTwo;
     FirebaseAuth mAuth;

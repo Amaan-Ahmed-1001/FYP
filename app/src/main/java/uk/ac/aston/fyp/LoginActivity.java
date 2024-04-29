@@ -21,8 +21,6 @@ public class LoginActivity extends AppCompatActivity {
 
     private String username;
     private String password;
-    //test email: test@email.com
-    //test password: 123456a
     EditText user;
     EditText pass;
     private FirebaseAuth mAuth;

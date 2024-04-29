@@ -23,6 +23,7 @@ import com.google.firebase.storage.StorageReference;
 
 public class SettingsActivity extends AppCompatActivity {
 
+//SETTINGS PAGE
     Button deleteAccountButton;
     FirebaseFirestore db;
     FirebaseStorage storage;
