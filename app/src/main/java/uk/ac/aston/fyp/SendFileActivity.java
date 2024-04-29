@@ -92,8 +92,6 @@ public class SendFileActivity extends AppCompatActivity {
     public void sendFile(View view) {
             Intent i = new Intent();
             i.setAction(Intent.ACTION_GET_CONTENT);
-
-            // We will be redirected to choose pdf
             i.setType("application/pdf");
             startActivityForResult(i, 1);
     }
@@ -109,7 +107,6 @@ public class SendFileActivity extends AppCompatActivity {
             StorageReference storageReference = FirebaseStorage.getInstance().getReference();
             Toast.makeText(SendFileActivity.this, "File Sent", Toast.LENGTH_SHORT).show();
 
-            // Here we are uploading the pdf in firebase storage with the name of current time
             final StorageReference filepath = storageReference.child(item + "/" + filename + "." + "pdf");
             Toast.makeText(SendFileActivity.this, filepath.getName(), Toast.LENGTH_SHORT).show();
             filepath.putFile(imageuri).continueWithTask(new Continuation() {
